@@ -3,7 +3,7 @@ on:
   workflow_run:
     workflows: ["Continuous Integration"]
     types:
-    - completed
+      - completed
   
   workflow_dispatch:
 
@@ -17,4 +17,3 @@ jobs:
       env:
         HF: ${{  secrets.HF  }}
       run: make deploy HF=$HF
-      
