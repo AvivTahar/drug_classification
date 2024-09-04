@@ -28,7 +28,7 @@ hf-login:
 	huggingface-cli login --token $(HF)
 
 push-hub:
-	git clone https://huggingface.co/spaces/avivsimontahar/drug_classification
+	git remote add origin https://huggingface.co/spaces/avivsimontahar/drug_classification
 	git add ./App/app.py
 	git commit -m "Add application file"
 	git push
