@@ -30,6 +30,8 @@ hf-login:
 push-hub:
 	git remote add origin https://huggingface.co/spaces/avivsimontahar/drug_classification
 	git add ./App/app.py
+	git config --global user.email "simontahar@proton.me"
+	git config --global user.name "avivsimontahar"
 	git commit -m "Add application file"
 	git push
 	huggingface-cli upload avivsimontahar/drug_classification ./App --repo-type=space --commit-message="Sync App files"
