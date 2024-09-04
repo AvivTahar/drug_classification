@@ -29,4 +29,13 @@ jobs:
         env:
           NAME: ${{  secrets.USER_NAME  }}
           EMAIL: ${{  secrets.USER_EMAIL  }}
-        run: make update-branch USER_NAME=$NAME USER_EMAIL=$EMAIL BRANCH=${{ github.head_ref  }}
+        # run: make update-branch USER_NAME=$NAME USER_EMAIL=$EMAIL BRANCH=${{ github.head_ref  }}
+        run: |
+        git config --local user.email $EMAIL
+        git config --local user.name "github-actions[bot]"
+        git commit -a -m "Add Changes"
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{  secrets.GITHUB_TOKEN  }}
+          branch: ${{  github.ref  }}
