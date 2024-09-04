@@ -27,7 +27,11 @@ hf-login:
 	pip install -U "huggingface_hub[cli]"
 	huggingface-cli login --token $(HF)
 
-push-hub: 
+push-hub:
+	git clone https://huggingface.co/spaces/avivsimontahar/drug_classification
+	git add ./App/app.py
+	git commit -m "Add application file"
+	git push
 	huggingface-cli upload avivsimontahar/drug_classification ./App --repo-type=space --commit-message="Sync App files"
 	huggingface-cli upload avivsimontahar/drug_classification ./Model /Model --repo-type=space --commit-message="Sync Model"
 	huggingface-cli upload avivsimontahar/drug_classification ./Results /Metrics --repo-type=space --commit-message="Sync Model"
